@@ -21,6 +21,10 @@
         font-weight: bold;
         overflow: hidden;
     }
+    .numset {
+        text-align: center;
+        padding: 10px;
+    }
     </style>
 </head>
 <body>
@@ -50,7 +54,7 @@ function getLuckyNumber(){
 function genLottoHTML(){
     var numbers = getLuckyNumber();
     var lottoHTML = '';
-    lottoHTML += '<div><span class="number">';
+    lottoHTML += '<div class="numset"><span class="number">';
     lottoHTML += numbers.join('</span> <span class="number">');
     lottoHTML += '</span></div>';
     LOTTO.innerHTML = lottoHTML;
