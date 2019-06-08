@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lotto</title>
+    <!-- TODO 추첨 번호(.number) 스타일 작성 [feature/style]-->
 </head>
 <body>
     <h1>로또번호 추첨기</h1>
@@ -28,6 +29,11 @@ function getLuckyNumber(){
         }
     }
     LOTTO.innerHTML = numbers.join(" ");
+}
+// TODO 로또 번호(.number) html 생성 함수 작성 [feature/script]
+function genLottoHTML(){
+    var lottoHTML = numbers.join(" ");
+    LOTTO.innerHTML = lottoHTML;
 }
 </script>
 </body>
