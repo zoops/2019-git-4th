@@ -26,7 +26,7 @@
 <body>
     <h1>로또번호 추첨기</h1>
 
-    <button onclick="getLuckyNumber()">생성하기</button>
+    <button onclick="genLottoHTML()">생성하기</button>
     <div id="LOTTO"></div>
     
 <script>
@@ -44,11 +44,15 @@ function getLuckyNumber(){
             numbers.push(newNumber);
         }
     }
-    LOTTO.innerHTML = numbers.join(" ");
+    return numbers;
 }
 // TODO 로또 번호(.number) html 생성 함수 작성 [feature/script]
 function genLottoHTML(){
-    var lottoHTML = numbers.join(" ");
+    var numbers = getLuckyNumber();
+    var lottoHTML = '';
+    lottoHTML += '<div><span class="number">';
+    lottoHTML += numbers.join('</span> <span class="number">');
+    lottoHTML += '</span></div>';
     LOTTO.innerHTML = lottoHTML;
 }
 </script>
