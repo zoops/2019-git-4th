@@ -32,7 +32,11 @@ function getLuckyNumber(){
 }
 // TODO 로또 번호(.number) html 생성 함수 작성 [feature/script]
 function genLottoHTML(){
-    var lottoHTML = numbers.join(" ");
+    var numbers = getLuckyNumber();
+    var lottoHTML = '';
+    lottoHTML += '<div><span class="number">';
+    lottoHTML += numbers.join('</span> <span class="number">');
+    lottoHTML += '</span></div>';
     LOTTO.innerHTML = lottoHTML;
 }
 </script>
