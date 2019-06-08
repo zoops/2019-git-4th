@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lotto</title>
+</head>
+<body>
+    <h1>로또번호 추첨기</h1>
+
+    <button onclick="getLuckyNumber()">생성하기</button>
+    <div id="LOTTO"></div>
+    
+<script>
+var LOTTO = document.getElementById("LOTTO");
+// 랜덤 번호 생성 함수
+function genLottoNo(){
+    return Math.floor(Math.random()*45);
+}
+// 로또 번호 추첨 함수 
+function getLuckyNumber(){
+    var numbers = [];
+    while( numbers.length < 6 ) {
+        var newNumber = genLottoNo();
+        if( numbers.indexOf(newNumber)<0 ) { // 중복검사
+            numbers.push(newNumber);
+        }
+    }
+    LOTTO.innerHTML = numbers.join(" ");
+}
+</script>
+</body>
+</html>
