@@ -55,19 +55,33 @@ function genLottoHTML(){
     var lottoHTML = '';
     for (var i=0; i<5; i++) {
         var numbers = getLuckyNumber();
+        while( checkLogic(numbers) ) numbers=getLuckyNumber();
+        while( checkLogic2(numbers) ) numbers=getLuckyNumber();
         lottoHTML += '<div class="numset"><span class="number">';
         lottoHTML += numbers.join('</span> <span class="number">');
         lottoHTML += '</span></div>';
     }
     LOTTO.innerHTML = lottoHTML;
-    // 11,12,13과 같은 연속된 숫자가 3개이상 나오지 않도록 [testPR]
-    function checkLogic(numbers) {
-        for(var i=0; i<numbers.length; i++){
-            var no = numbers[i];
-            if( numbers.indexOf(no+1)>=0 && numbers.indexOf(no+2)>=0 ) return true;
-        }
-        return false;
+
+}
+
+// 11,12,13과 같은 연속된 숫자가 3개이상 나오지 않도록 [testPR]
+function checkLogic(numbers) {
+    for(var i=0; i<numbers.length; i++){
+        var no = numbers[i];
+        if( numbers.indexOf(no+1)>=0 && numbers.indexOf(no+2)>=0 ) return true;
     }
+    return false;
+}
+
+// 11,14,19 처럼 같은 10의 자리 숫자가 3개 이상 나오지 않도록 [PRflow]
+function checkLogic2(numbers){
+    var decArea = [0, 0, 0, 0, 0];
+    for(var i=0; i<numbers.length; i++){
+        var area = Math.floor( numbers[i]/10 );
+        decArea[area]++;
+    }
+    return ( decArea[0]>2 || decArea[1]>2 || decArea[2]>2 || decArea[3]>2 || decArea[4]>2 );
 }
 </script>
 </body>
