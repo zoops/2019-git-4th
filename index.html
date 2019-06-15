@@ -60,6 +60,14 @@ function genLottoHTML(){
         lottoHTML += '</span></div>';
     }
     LOTTO.innerHTML = lottoHTML;
+    // 11,12,13과 같은 연속된 숫자가 3개이상 나오지 않도록 [testPR]
+    function checkLogic(numbers) {
+        for(var i=0; i<numbers.length; i++){
+            var no = numbers[i];
+            if( numbers.indexOf(no+1)>=0 && numbers.indexOf(no+2)>=0 ) return true;
+        }
+        return false;
+    }
 }
 </script>
 </body>
